@@ -14,8 +14,13 @@ pipeline {
         stage('Docker Setup') {
             steps {
                 script {
-                    // Create and use a Docker Buildx builder
-                    sh 'docker buildx create --name mybuilder --use || true'
+                    // Check if the Docker Buildx builder already exists
+                    def builderExists = sh(script: 'docker buildx ls | grep mybuilder || true', returnStatus: true) == 0
+                    if (!builderExists) {
+                        sh 'docker buildx create --name mybuilder --use'
+                    } else {
+                        sh 'docker buildx use mybuilder'
+                    }
                     sh 'docker buildx inspect --bootstrap'
                 }
             }
