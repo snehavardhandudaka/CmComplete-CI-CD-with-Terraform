@@ -14,7 +14,12 @@ pipeline {
         stage('Docker Build & Push') {
             steps {
                 script {
-                    dockerImage = docker.build("vardhansneha/vardhan-project:${env.BUILD_NUMBER}")
+                    // Setup Docker Buildx
+                    sh 'docker buildx create --name mybuilder --use'
+                    sh 'docker buildx inspect --bootstrap'
+                    
+                    // Build and push Docker image with Buildx
+                    dockerImage = docker.build("vardhansneha/vardhan-project:${env.BUILD_NUMBER}", "--builder mybuilder")
                     docker.withRegistry('https://index.docker.io/v1/', 'dockerhub-credentials-id') {
                         dockerImage.push()
                     }
@@ -23,7 +28,7 @@ pipeline {
         }
         stage('Provision') {
             steps {
-                withCredentials([[$class: 'AmazonWebServicesCredentialsBinding', credentialsId: 'TWN.pub']]) {
+                withCredentials([[$class: 'AmazonWebServicesCredentialsBinding', credentialsId: 'aws-credentials-id']]) {
                     sh '''
                     cd terraform
                     terraform init
