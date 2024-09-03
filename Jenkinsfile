@@ -41,7 +41,7 @@ pipeline {
                         sh '''
                         mkdir -p /var/lib/jenkins/.ssh
                         echo "Instance Public IP: ${INSTANCE_PUBLIC_IP}"
-                        ping -c 4 ${INSTANCE_PUBLIC_IP}
+                        sleep 60  # Add a delay to ensure the instance is ready
                         ssh-keyscan -H ${INSTANCE_PUBLIC_IP} >> /var/lib/jenkins/.ssh/known_hosts
                         scp docker-compose.yml ec2-user@${INSTANCE_PUBLIC_IP}:/
                         '''
