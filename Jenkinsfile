@@ -1,9 +1,7 @@
 pipeline {
     agent any
     environment {
-        AWS_DEFAULT_REGION = 'us-east-1'
-        AWS_ACCESS_KEY_ID = credentials('aws-access-key-id')
-        AWS_SECRET_ACCESS_KEY = credentials('aws-secret-access-key')
+        AWS_DEFAULT_REGION = 'us-east-2'
     }
     stages {
         stage('Build') {
@@ -23,7 +21,8 @@ pipeline {
         }
         stage('Provision') {
             steps {
-                withEnv(["AWS_ACCESS_KEY_ID=${env.AWS_ACCESS_KEY_ID}", "AWS_SECRET_ACCESS_KEY=${env.AWS_SECRET_ACCESS_KEY}"]) {
+                withCredentials([string(credentialsId: 'aws-access-key-id', variable: 'AWS_ACCESS_KEY_ID'),
+                                 string(credentialsId: 'aws-secret-access-key', variable: 'AWS_SECRET_ACCESS_KEY')]) {
                     sh '''
                     cd terraform
                     terraform init
