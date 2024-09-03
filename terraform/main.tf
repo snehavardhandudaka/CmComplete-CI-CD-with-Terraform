@@ -17,3 +17,11 @@ variable "key_name" {
   description = "The SSH key pair name to use for the instance"
   default     = "TWN.pub"
 }
+
+variable "aws_access_key_id" {
+  description = "The AWS access key ID"
+}
+
+variable "aws_secret_access_key" {
+  description = "The AWS secret access key"
+}
