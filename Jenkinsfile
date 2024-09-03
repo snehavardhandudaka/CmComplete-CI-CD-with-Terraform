@@ -11,13 +11,20 @@ pipeline {
                 sh 'mvn clean package'
             }
         }
+        stage('Docker Setup') {
+            steps {
+                script {
+                    // Create and use a Docker Buildx builder
+                    sh 'docker buildx create --name mybuilder --use || true'
+                    sh 'docker buildx inspect --bootstrap'
+                }
+            }
+        }
         stage('Docker Build & Push') {
             steps {
                 script {
-                    dockerImage = docker.build("vardhansneha/vardhan-project:${env.BUILD_NUMBER}")
-                    docker.withRegistry('https://index.docker.io/v1/', 'dockerhub-credentials-id') {
-                        dockerImage.push()
-                    }
+                    // Build and push Docker image with Buildx
+                    sh 'docker buildx build -t vardhansneha/vardhan-project:${env.BUILD_NUMBER} --push .'
                 }
             }
         }
