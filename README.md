@@ -3,15 +3,17 @@
 Project Overview: Complete CI/CD with Terraform
 Technologies Used:
 
-Terraform
-Jenkins
-Docker
-AWS
-Git
-Java
-Maven
-Linux
-Docker Hub
+Terraform,
+Jenkins,
+Docker,
+AWS,
+Git,
+Java,
+Maven,
+Linux,
+Docker Hub.
+
+
 Project Description: This project is all about automating the process of building, testing, and deploying a Java Maven application. Instead of manually setting up servers and deploying applications, we’ve created a pipeline that does it all for us. Here’s a breakdown of what we did:
 
 Create SSH Key Pair: We generated an SSH key pair to securely connect to our EC2 instance.
