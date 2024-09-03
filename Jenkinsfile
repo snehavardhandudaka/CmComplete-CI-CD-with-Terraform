@@ -23,11 +23,14 @@ pipeline {
             steps {
                 withCredentials([string(credentialsId: 'aws-access-key-id', variable: 'AWS_ACCESS_KEY_ID'),
                                  string(credentialsId: 'aws-secret-access-key', variable: 'AWS_SECRET_ACCESS_KEY')]) {
-                    sh '''
-                    cd terraform
-                    terraform init
-                    terraform apply -auto-approve
-                    '''
+                    script {
+                        sh '''
+                        cd terraform
+                        terraform init
+                        terraform apply -auto-approve
+                        '''
+                        env.INSTANCE_PUBLIC_IP = sh(script: 'cd terraform && terraform output -raw instance_public_ip', returnStdout: true).trim()
+                    }
                 }
             }
         }
@@ -36,9 +39,8 @@ pipeline {
                 sshagent(credentials: ['TWN.pub']) {
                     sh '''
                     mkdir -p /var/lib/jenkins/.ssh
-                    instance_ip=$(terraform output -raw instance_public_ip)
-                    ssh-keyscan -H $instance_ip >> /var/lib/jenkins/.ssh/known_hosts
-                    scp docker-compose.yml ec2-user@$instance_ip:/
+                    ssh-keyscan -H ${INSTANCE_PUBLIC_IP} >> /var/lib/jenkins/.ssh/known_hosts
+                    scp docker-compose.yml ec2-user@${INSTANCE_PUBLIC_IP}:/
                     '''
                 }
             }
