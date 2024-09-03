@@ -18,3 +18,7 @@ variable "key_name" {
   default     = "TWN.pub"
 }
 
+output "instance_public_ip" {
+  description = "The public IP address of the EC2 instance"
+  value       = aws_instance.your_instance_name.public_ip
+}
