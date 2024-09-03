@@ -1,7 +1,7 @@
 pipeline {
     agent any
     environment {
-        AWS_DEFAULT_REGION = 'us-east-1'
+        AWS_DEFAULT_REGION = 'us-east-2'
     }
     stages {
         stage('Build') {
@@ -35,7 +35,8 @@ pipeline {
             steps {
                 sshagent(credentials: ['TWN.pub']) {
                     sh '''
-                    ssh-keyscan -H $(terraform output -raw instance_public_ip) >> ~/.ssh/known_hosts
+                    mkdir -p /var/lib/jenkins/.ssh
+                    ssh-keyscan -H $(terraform output -raw instance_public_ip) >> /var/lib/jenkins/.ssh/known_hosts
                     scp docker-compose.yml ec2-user@$(terraform output -raw instance_public_ip):/
                     '''
                 }
