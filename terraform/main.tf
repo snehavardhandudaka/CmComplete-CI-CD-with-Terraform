@@ -18,7 +18,21 @@ variable "key_name" {
   default     = "TWN.pub"
 }
 
+provider "aws" {
+  region = var.aws_region
+}
+
+resource "aws_instance" "my_instance" {
+  ami           = var.ami_id
+  instance_type = var.instance_type
+  key_name      = var.key_name
+
+  tags = {
+    Name = "MyInstance"
+  }
+}
+
 output "instance_public_ip" {
   description = "The public IP address of the EC2 instance"
-  value       = aws_instance.your_instance_name.public_ip
+  value       = aws_instance.my_instance.public_ip
 }
