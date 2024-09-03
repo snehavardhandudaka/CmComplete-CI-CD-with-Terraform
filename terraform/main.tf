@@ -1,18 +1,23 @@
-provider "aws" {
-  region = "us-east-2"
+# Define the AWS region variable
+variable "aws_region" {
+  description = "The AWS region to deploy the resources"
+  default     = "us-east-2"
 }
 
-resource "aws_instance" "app_server" {
-  ami           = "ami-0c55b159cbfafe1f0"  # Example AMI, change as needed
-  instance_type = "t2.micro"
-  key_name      = "TWN.pub"  # Replace with your SSH key name
-
-  tags = {
-    Name = "Jenkins-CI-CD-Server"
-  }
+# Define the AMI ID variable
+variable "ami_id" {
+  description = "The AMI ID to use for the instance"
+  default     = "ami-0c55b159cbfafe1f0"  # Example AMI, change as needed
 }
 
-output "instance_public_ip" {
-  value = aws_instance.app_server.public_ip
+# Define the instance type variable
+variable "instance_type" {
+  description = "The instance type to use for the EC2 instance"
+  default     = "t2.micro"
 }
 
+# Define the key name variable
+variable "key_name" {
+  description = "The SSH key pair name to use for the instance"
+  default     = "TWN.pub"  # Replace with your SSH key name
+}
