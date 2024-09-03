@@ -33,4 +33,9 @@ pipeline {
                 sshagent(credentials: ['TWN.pub']) {
                     sh '''
                     scp docker-compose.yml ec2-user@$(terraform output -raw instance_public_ip):/
-
+                    '''
+                }
+            }
+        }
+    }
+}
