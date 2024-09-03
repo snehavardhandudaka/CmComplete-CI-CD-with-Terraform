@@ -1,7 +1,7 @@
 pipeline {
     agent any
     environment {
-        AWS_DEFAULT_REGION = 'us-east-2'
+        AWS_DEFAULT_REGION = 'us-east-1'
         AWS_ACCESS_KEY_ID = credentials('aws-access-key-id')
         AWS_SECRET_ACCESS_KEY = credentials('aws-secret-access-key')
     }
@@ -23,11 +23,13 @@ pipeline {
         }
         stage('Provision') {
             steps {
-                sh '''
-                cd terraform
-                terraform init
-                terraform apply -auto-approve
-                '''
+                withEnv(["AWS_ACCESS_KEY_ID=${env.AWS_ACCESS_KEY_ID}", "AWS_SECRET_ACCESS_KEY=${env.AWS_SECRET_ACCESS_KEY}"]) {
+                    sh '''
+                    cd terraform
+                    terraform init
+                    terraform apply -auto-approve
+                    '''
+                }
             }
         }
         stage('Deploy') {
