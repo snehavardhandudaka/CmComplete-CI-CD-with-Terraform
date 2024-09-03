@@ -37,11 +37,15 @@ pipeline {
         stage('Deploy') {
             steps {
                 sshagent(credentials: ['TWN.pub']) {
-                    sh '''
-                    mkdir -p /var/lib/jenkins/.ssh
-                    ssh-keyscan -H ${INSTANCE_PUBLIC_IP} >> /var/lib/jenkins/.ssh/known_hosts
-                    scp docker-compose.yml ec2-user@${INSTANCE_PUBLIC_IP}:/
-                    '''
+                    script {
+                        sh '''
+                        mkdir -p /var/lib/jenkins/.ssh
+                        echo "Instance Public IP: ${INSTANCE_PUBLIC_IP}"
+                        ping -c 4 ${INSTANCE_PUBLIC_IP}
+                        ssh-keyscan -H ${INSTANCE_PUBLIC_IP} >> /var/lib/jenkins/.ssh/known_hosts
+                        scp docker-compose.yml ec2-user@${INSTANCE_PUBLIC_IP}:/
+                        '''
+                    }
                 }
             }
         }
