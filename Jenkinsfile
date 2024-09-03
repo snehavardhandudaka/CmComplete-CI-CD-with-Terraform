@@ -1,8 +1,10 @@
 pipeline {
     agent any
+
     environment {
         AWS_DEFAULT_REGION = 'us-east-2'
     }
+
     stages {
         stage('Build') {
             steps {
@@ -13,7 +15,7 @@ pipeline {
             steps {
                 script {
                     dockerImage = docker.build("vardhansneha/vardhan-project:${env.BUILD_NUMBER}")
-                    docker.withRegistry('https://index.docker.io/v1/', 'vardhansneha') {
+                    docker.withRegistry('https://index.docker.io/v1/', 'dockerhub-credentials-id') {
                         dockerImage.push()
                     }
                 }
@@ -21,11 +23,13 @@ pipeline {
         }
         stage('Provision') {
             steps {
-                sh '''
-                cd terraform
-                terraform init
-                terraform apply -auto-approve
-                '''
+                withCredentials([[$class: 'AmazonWebServicesCredentialsBinding', credentialsId: 'aws-credentials-id']]) {
+                    sh '''
+                    cd terraform
+                    terraform init
+                    terraform apply -auto-approve
+                    '''
+                }
             }
         }
         stage('Deploy') {
