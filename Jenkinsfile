@@ -36,8 +36,9 @@ pipeline {
                 sshagent(credentials: ['TWN.pub']) {
                     sh '''
                     mkdir -p /var/lib/jenkins/.ssh
-                    ssh-keyscan -H $(terraform output -raw instance_public_ip) >> /var/lib/jenkins/.ssh/known_hosts
-                    scp docker-compose.yml ec2-user@$(terraform output -raw instance_public_ip):/
+                    instance_ip=$(terraform output -raw instance_public_ip)
+                    ssh-keyscan -H $instance_ip >> /var/lib/jenkins/.ssh/known_hosts
+                    scp docker-compose.yml ec2-user@$instance_ip:/
                     '''
                 }
             }
