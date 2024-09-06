@@ -12,18 +12,10 @@ Project Overview: Complete CI/CD with Terraform
              B. CI step: Build and push Docker image to Docker Hub
              C. CD step: Automatically provision EC2 instance using TF
              D. CD step: Deploy new application version on the provisioned EC2 instance with Docker Compose
+         Technologies used:
+         Terraform, Jenkins, Docker, AWS, Git, Java, Maven, Linux, Docker Hub
 
-
-      A. Technologies Used:
-         1. Terraform
-         2. Jenkins
-         3. Docker
-         4. AWS
-         5. Git
-         6. Java
-         7. Maven
-         8. Linux
-         9. Docker Hub
+      
 
 B. Project Description:
     This project is all about automating the process of building, testing, and deploying a Java Maven application. Instead of manually setting up servers and deploying applications, we’ve created a pipeline that does it all for us. Here’s a breakdown of what we did:
