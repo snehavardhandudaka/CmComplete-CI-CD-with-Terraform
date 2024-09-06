@@ -18,12 +18,16 @@ Project Overview: Complete CI/CD with Terraform
       
          A. Project Description:
          This project is all about automating the process of building, testing, and deploying a Java Maven application.
-         Instead of manually setting up servers and deploying applications, we’ve created a pipeline that does it all for us. Here’s a breakdown of what we did:
-
-   B. Create SSH Key Pair: I have generated an SSH key pair to securely connect to our EC2 instance.
-     1. Install Terraform inside Jenkins Container: I did set up Terraform within Jenkins to manage our infrastructure as code.
-     2. Add Terraform Configuration to Application’s Git Repository: I have included Terraform configuration files in our Git repository to define our infrastructure.
-     3. Adjust Jenkinsfile to Add “Provision” Step: I have modified our Jenkinsfile to include a “provision” step that uses Terraform to set up an EC2 instance.
+         Instead of manually setting up servers and deploying applications, we’ve created a pipeline that does it all for us. 
+         Here’s a breakdown of what we did:
+------------------------
+         B. Create SSH Key Pair: I have generated an SSH key pair to securely connect to our EC2 instance.
+            1. Install Terraform inside Jenkins Container: I did set up Terraform within Jenkins to manage our infrastructure 
+               as code.
+            2. Add Terraform Configuration to Application’s Git Repository: I have included Terraform configuration files in 
+               our Git repository to define our infrastructure.
+            3. Adjust Jenkinsfile to Add “Provision” Step: I have modified our Jenkinsfile to include a “provision” step that 
+               uses Terraform to set up an EC2 instance.
  
   C. Complete CI/CD Configuration:
      1. CI Step: Build the Java Maven application.
