@@ -28,19 +28,20 @@ Project Overview: Complete CI/CD with Terraform
                our Git repository to define our infrastructure.
             3. Adjust Jenkinsfile to Add “Provision” Step: I have modified our Jenkinsfile to include a “provision” step that 
                uses Terraform to set up an EC2 instance.
- 
-  C. Complete CI/CD Configuration:
-     1. CI Step: Build the Java Maven application.
-     2. CI Step: Build and push the Docker image to Docker Hub.
-     3. CD Step: Automatically provision an EC2 instance using Terraform.
-     4. CD Step: Deploy the new application version on the provisioned EC2 instance using Docker Compose.
-
-  D. What Did You Build?
-  I have built a complete CI/CD pipeline that automates the entire process of building, testing, and deploying our Java Maven application. The pipeline includes the following stages:
-     1. Build: Compile the Java application and create a build artifact.
-     2. Docker Build & Push: Build a Docker image for the application and push it to Docker Hub.
-     3. Provision: Automatically provision an EC2 instance using Terraform.
-     4. Deploy: Deploy the new application version on the provisioned EC2 instance using Docker Compose.
+-------------------------               
+        C. Complete CI/CD Configuration:
+           1. CI Step: Build the Java Maven application.
+           2. CI Step: Build and push the Docker image to Docker Hub.
+           3. CD Step: Automatically provision an EC2 instance using Terraform.
+           4. CD Step: Deploy the new application version on the provisioned EC2 instance using Docker Compose.
+-------------------------
+        D. What Did You Build?
+          I have built a complete CI/CD pipeline that automates the entire process of building, testing, and deploying our Java 
+          Maven application. The pipeline includes the following stages:
+          1. Build: Compile the Java application and create a build artifact.
+          2. Docker Build & Push: Build a Docker image for the application and push it to Docker Hub.
+          3. Provision: Automatically provision an EC2 instance using Terraform.
+          4. Deploy: Deploy the new application version on the provisioned EC2 instance using Docker Compose.
 
   E. What Have You Learned?
   Through this project, I learned:
