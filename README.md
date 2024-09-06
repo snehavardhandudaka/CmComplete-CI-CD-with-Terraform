@@ -1,15 +1,16 @@
 # Complete-CI-CD-with-Terraform
 Project Overview: Complete CI/CD with Terraform
-A. Technologies Used:
-    1. Terraform
-    2. Jenkins
-    3. Docker
-    4. AWS
-    5. Git
-    6. Java
-    7. Maven
-    8. Linux
-    9. Docker Hub
+
+      A. Technologies Used:
+         1. Terraform
+         2. Jenkins
+         3. Docker
+         4. AWS
+         5. Git
+         6. Java
+         7. Maven
+         8. Linux
+         9. Docker Hub
 
 B. Project Description:
     This project is all about automating the process of building, testing, and deploying a Java Maven application. Instead of manually setting up servers and deploying applications, we’ve created a pipeline that does it all for us. Here’s a breakdown of what we did:
