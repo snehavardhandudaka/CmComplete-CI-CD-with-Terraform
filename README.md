@@ -14,10 +14,10 @@ Project Overview: Complete CI/CD with Terraform
              D. CD step: Deploy new application version on the provisioned EC2 instance with Docker Compose
          Technologies used:
          Terraform, Jenkins, Docker, AWS, Git, Java, Maven, Linux, Docker Hub
-
+-----------------------
       
-   A. Project Description:
-      This project is all about automating the process of building, testing, and deploying a Java Maven application. Instead of manually setting up servers and deploying applications, we’ve created a pipeline that does it all for us. Here’s a breakdown of what we did:
+         A. Project Description:
+         This project is all about automating the process of building, testing, and deploying a Java Maven application. Instead of manually setting up servers and deploying applications, we’ve created a pipeline that does it all for us. Here’s a breakdown of what we did:
 
    B. Create SSH Key Pair: I have generated an SSH key pair to securely connect to our EC2 instance.
      1. Install Terraform inside Jenkins Container: I did set up Terraform within Jenkins to manage our infrastructure as code.
