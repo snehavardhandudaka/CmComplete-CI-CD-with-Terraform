@@ -30,14 +30,14 @@ Project Overview: Complete CI/CD with Terraform
      3. CD Step: Automatically provision an EC2 instance using Terraform.
      4. CD Step: Deploy the new application version on the provisioned EC2 instance using Docker Compose.
 
-  E. What Did You Build?
+  D. What Did You Build?
   I have built a complete CI/CD pipeline that automates the entire process of building, testing, and deploying our Java Maven application. The pipeline includes the following stages:
      1. Build: Compile the Java application and create a build artifact.
      2. Docker Build & Push: Build a Docker image for the application and push it to Docker Hub.
      3. Provision: Automatically provision an EC2 instance using Terraform.
      4. Deploy: Deploy the new application version on the provisioned EC2 instance using Docker Compose.
 
-  F. What Have You Learned?
+  E. What Have You Learned?
   Through this project, I learned:
     1. Infrastructure as Code (IaC): How to use Terraform to define and manage infrastructure.
     2. CI/CD Pipelines: How to set up and configure a complete CI/CD pipeline using Jenkins.
