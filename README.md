@@ -42,13 +42,15 @@ Project Overview: Complete CI/CD with Terraform
           2. Docker Build & Push: Build a Docker image for the application and push it to Docker Hub.
           3. Provision: Automatically provision an EC2 instance using Terraform.
           4. Deploy: Deploy the new application version on the provisioned EC2 instance using Docker Compose.
-
-  E. What Have You Learned?
-  Through this project, I learned:
-    1. Infrastructure as Code (IaC): How to use Terraform to define and manage infrastructure.
-    2. CI/CD Pipelines: How to set up and configure a complete CI/CD pipeline using Jenkins.
-    3. Docker: How to build Docker images and push them to Docker Hub.
-    4. AWS: How to provision and manage EC2 instances on AWS.
-    5. Automation: How to automate the entire process of building, testing, and deploying applications.
-    6. Integration: How to integrate various tools and technologies (Terraform, Jenkins, Docker, AWS) to create a seamless CI/CD pipeline.
-    7. This project demonstrates our ability to automate infrastructure provisioning and application deployment, making the process more efficient and reliable. Great job! 🚀
+-------------------------
+       E. What Have You Learned?
+          Through this project, I learned:
+            1. Infrastructure as Code (IaC): How to use Terraform to define and manage infrastructure.
+            2. CI/CD Pipelines: How to set up and configure a complete CI/CD pipeline using Jenkins.
+            3. Docker: How to build Docker images and push them to Docker Hub.
+            4. AWS: How to provision and manage EC2 instances on AWS.
+            5. Automation: How to automate the entire process of building, testing, and deploying applications.
+            6. Integration: How to integrate various tools and technologies (Terraform, Jenkins, Docker, AWS) to create a 
+               seamless CI/CD pipeline.
+            7. This project demonstrates our ability to automate infrastructure provisioning and application deployment, making 
+               the process more efficient and reliable. Great job! 🚀
