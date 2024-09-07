@@ -8,7 +8,7 @@ Project Overview: Complete CI/CD with Terraform
           3. Add Terraform configuration to application's git repository
           4. Adjust Jenkins file to add "provision" step to the CI/CD pipeline that provisions EC2 instance
           5. So the complete CI/CD project we build has the following configuration: |
-             A. CI step: Build artifact for Java Maven application
+             - CI step: Build artifact for Java Maven application
              B. CI step: Build and push Docker image to Docker Hub
              C. CD step: Automatically provision EC2 instance using TF
              D. CD step: Deploy new application version on the provisioned EC2 instance with Docker Compose
